@@ -31,3 +31,22 @@
     transform: rotate(360deg);
   }
 }
+
+
+.btn-primary{
+  background-color: #836f63 !important;
+  color: rgb(250, 250, 250) !important;
+  margin-right: 25px;
+  border: 2px solid rgb(0, 0, 0) !important; 
+  margin-bottom: 15px;
+  
+}
+
+.btn-primary-bez{
+  background-color: #836f63 !important;
+  color: rgb(250, 250, 250) !important;
+  
+  border: 2px solid rgb(0, 0, 0) !important; 
+  margin-bottom: 15px;
+  
+}
