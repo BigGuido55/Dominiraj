@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DominoWebApi.Migrations
 {
     [DbContext(typeof(DominoDbContext))]
-    [Migration("20190429200547_DominoWebApi.Database.DominoDbContext")]
-    partial class DominoWebApiDatabaseDominoDbContext
+    [Migration("20190530140534_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,13 +23,16 @@ namespace DominoWebApi.Migrations
 
             modelBuilder.Entity("DominoWebApi.Models.Question", b =>
                 {
-                    b.Property<string>("QuestionText")
+                    b.Property<Guid>("QuestionId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Category")
                         .IsRequired();
 
                     b.Property<string>("CorrectAnswer")
+                        .IsRequired();
+
+                    b.Property<string>("QuestionText")
                         .IsRequired();
 
                     b.Property<string>("WrongAnswer1")
@@ -41,7 +44,7 @@ namespace DominoWebApi.Migrations
                     b.Property<string>("WrongAnswer3")
                         .IsRequired();
 
-                    b.HasKey("QuestionText");
+                    b.HasKey("QuestionId");
 
                     b.ToTable("Questions");
                 });

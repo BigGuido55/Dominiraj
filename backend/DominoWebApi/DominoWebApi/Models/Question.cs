@@ -7,6 +7,7 @@ namespace DominoWebApi.Models
 {
     public class Question
     {
+        public Guid QuestionId { get; set; }
         public String QuestionText { get; set; }
         public String CorrectAnswer { get; set; }
         public String WrongAnswer1 { get; set; }
@@ -16,6 +17,7 @@ namespace DominoWebApi.Models
 
         public Question()
         {
+            QuestionId = Guid.NewGuid();
             //this.QuestionText = new string("");
             //this.CorrectAnswer = new string("");
             //this.WrongAnswer1 = new string("");
@@ -25,6 +27,7 @@ namespace DominoWebApi.Models
 
         public Question(String Category, String QuestionText, String CorrectAnswer, String WrongAnswer1, String WrongAnswer2, String WrongAnswer3)
         {
+            QuestionId = Guid.NewGuid();
             this.Category = Category;
             this.QuestionText = QuestionText;
             this.CorrectAnswer = CorrectAnswer;

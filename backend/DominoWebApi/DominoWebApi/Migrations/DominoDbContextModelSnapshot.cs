@@ -21,13 +21,16 @@ namespace DominoWebApi.Migrations
 
             modelBuilder.Entity("DominoWebApi.Models.Question", b =>
                 {
-                    b.Property<string>("QuestionText")
+                    b.Property<Guid>("QuestionId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Category")
                         .IsRequired();
 
                     b.Property<string>("CorrectAnswer")
+                        .IsRequired();
+
+                    b.Property<string>("QuestionText")
                         .IsRequired();
 
                     b.Property<string>("WrongAnswer1")
@@ -39,7 +42,7 @@ namespace DominoWebApi.Migrations
                     b.Property<string>("WrongAnswer3")
                         .IsRequired();
 
-                    b.HasKey("QuestionText");
+                    b.HasKey("QuestionId");
 
                     b.ToTable("Questions");
                 });

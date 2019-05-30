@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DominoWebApi.Migrations
 {
-    public partial class DominoWebApiDatabaseDominoDbContext : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,6 +24,7 @@ namespace DominoWebApi.Migrations
                 name: "Questions",
                 columns: table => new
                 {
+                    QuestionId = table.Column<Guid>(nullable: false),
                     QuestionText = table.Column<string>(nullable: false),
                     CorrectAnswer = table.Column<string>(nullable: false),
                     WrongAnswer1 = table.Column<string>(nullable: false),
@@ -33,7 +34,7 @@ namespace DominoWebApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Questions", x => x.QuestionText);
+                    table.PrimaryKey("PK_Questions", x => x.QuestionId);
                 });
         }
 

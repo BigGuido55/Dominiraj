@@ -21,7 +21,8 @@ namespace DominoWebApi.Database
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Question>().HasKey(s => s.QuestionText);
+            modelBuilder.Entity<Question>().HasKey(s => s.QuestionId);
+            modelBuilder.Entity<Question>().Property(s => s.QuestionText).IsRequired();
             modelBuilder.Entity<Question>().Property(s => s.Category).IsRequired();
             modelBuilder.Entity<Question>().Property(s => s.CorrectAnswer).IsRequired();
             modelBuilder.Entity<Question>().Property(s => s.WrongAnswer1).IsRequired();
