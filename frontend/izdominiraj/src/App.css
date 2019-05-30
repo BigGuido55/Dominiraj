@@ -50,3 +50,39 @@
   margin-bottom: 15px;
   
 }
+
+.App-tekst{
+  background-color : white;
+  border: 2px solid rgb(0, 0, 0) !important; 
+  opacity: 0.8;
+}
+
+.btn-art{
+  background-color: #fff099 !important;
+  color: #000000 !important;
+}
+
+.btn-geo{
+  background-color: #c92828 !important;
+  color: #000000 !important;
+}
+
+.btn-sport{
+  background-color: #99d6ff !important;
+  color: #000000 !important;
+}
+
+.btn-his{
+  background-color: #f8aa35 !important;
+  color: #000000 !important;
+}
+
+.btn-sci{
+  background-color: #79d279 !important;
+  color: #000000 !important;
+}
+
+.btn-cro{
+  background-color: #ffccff !important;
+  color: #000000 !important;
+}

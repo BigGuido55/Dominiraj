@@ -9,11 +9,11 @@ namespace DominoDBinsert
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             List<Question> questions = new List<Question>();
 
-            using (StreamReader reader = new StreamReader("pitanjaPrle.txt"))
+            using (StreamReader reader = new StreamReader("pitanjaFico.txt"))
             {
                 try
                 {
@@ -49,7 +49,7 @@ namespace DominoDBinsert
                 {
                     context.Questions.Add(question);
                 }
-                await context.SaveChangesAsync();
+                context.SaveChanges();
             }   
         }
 
