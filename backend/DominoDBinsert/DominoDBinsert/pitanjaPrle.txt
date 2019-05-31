@@ -1,4 +1,4 @@
-﻿Geografija
+Geografija
 Koja je 5. po redu najmnogoljudnija zemlja na svijetu?
 SAD,Indonezija,Brazil,Pakistan,3
 Hrvatska
@@ -85,3 +85,102 @@ Antonio Canova,August Rodin,Jean-Antoine Houden,Claude Michel,2
 Geografija
 Koja od navedenih država nije članica G7?
 SAD,Japan,Kanada,Kina,4
+Znanost
+Čime su često predstavljeni pojmovi Sigmunda Freuda svjesnog, predsvjesnog i nesvjesnog uma?
+Morem,Ledenjakom,Olujom,Oblacima,2
+Znanost
+Tko je začetnik genetike, grane biologije koja se bavi proučavanjem nasljeđivanja kod živih bića?
+Francis Galton,Gregor Mendel,Jean-Baptiste Lamarck,Charles Darwin,2
+Hrvatska
+Hrvatska rukometna reprezentacija je osvojila zlato na koliko Olimpijskih igara?
+0,1,2,3,3
+Hrvatska
+Koje godine je Republika Hrvatska pristupila Europskoj Uniji?
+2009.,2011.,2013.,2015.,3
+Sport
+Koja boja pojasa označava najviši rang u džudu?
+Plava,Crna,Smeđa,Zelena,2
+Umjetnost
+U kojem je distopijskom romanu glavni neprijatelj države Emmanuel Goldstein?
+Fahrenheit 451,Životinjska farma,Čovjek u visokom dvorcu,1984,4
+Hrvatska
+Koja dva hrvatska otoka su jednake površine?
+Krk i Cres,Brač i Hvar,Korčula i Mljet,Šolta i Lastovo,1
+Hrvatska
+S koliko država graniči Republika Hrvatska (računajući kopnenu i morsku granicu)?
+4,5,6,7,3
+Hrvatska
+Koji hrvatski slikar je naslikao "Dolazak Hrvata"?
+Oton Iveković,Izidor Kršnjavi,Mato Celestin Medović,Vlaho Bukovac,1
+Hrvatska
+Tko je bio posljednji hrvatski kralj?
+Petar Svačić,Dmitar Zvonimir,Petar Krešimir IV.,Stjepan Držislav,1
+Povijest
+Koja godina je poznata po nacionalnim revolucijama, tzv. Proljeće naroda?
+1826.,1839.,1848.,1861.,3
+Povijest
+Koja od navedenih država nije bila dio "Istočnog bloka"?
+Poljska,Estonija,Grčka,Latvija,3
+Povijest
+Koja jedina država u Europi još uvijek ima diktatora na vlasti?
+Ukrajina,Bjelorusija,Moldavija,Latvija,2
+Znanost
+Koji od navedenih hormona je poznat kao hormon stresa?
+Testosteron,Kortizol,Inzulin,Somatotropin,2
+Sport
+Koji sport nije na olimpijskim igrama?
+Badminton,Golf,Nogomet,Šah,4
+Znanost
+Kako se zove znanstvena disciplina koja proučava insekte?
+Onkologija,Ihtiologija,Entomologija,Ornitologija,3
+Znanost
+Koji alkohol se koristi kao piće?
+Metanol,Etanol,Fenol,Propanol,2
+Znanost
+Koji od navedenih planeta nema mjesece?
+Mars,Venera,Jupiter,Saturn,2
+Znanost
+Koji zakon je otkrio Antoine Lavoisier?
+Zakon očuvanja mase,Zakon očuvanja energije,Zakon očuvanja količine gibanja,Zakon očuvanja kutne količine gibanja,1
+Umjetnost
+Koji otok je krasila skulptura grčke božice pobjede Nike?
+Kretu,Samotraku,Salaminu,Mikonos,2
+Umjetnost
+Primjer kojeg arhitektonskog stila je katedrala Notre-Dame?
+Romanike,Gotike,Baroka,Neoklasicizma,2
+Umjetnost
+Kojom pjesmom je švedska grupa ABBA pobjedila na Eurosongu?
+Dancing Queen,Waterloo,Take A Chance On Me,Fernando,2
+Umjetnost
+Nakon odsviranog koncerta gotovo uvijek slijedi...?
+Cis,Dis,Bis,Fis,3
+Umjetnost
+"Labuđe jezero" P.Iliča Čajkovskog je...?
+Simfonija,Mjuzikl,Opera,Balet,4
+Znanost
+Koji sisavac nese jaja?
+Koala,Plavetni kit,Dupin,Čudnovati kljunaš,4
+Znanost
+Koji se još izraz koristi za "slijepo crijevo"?
+Crvuljak,Sljepić,Visuljak,Crijevuljak,1
+Znanost
+Koliko pretklijetki ima ljudsko srce?
+1,2,3,4,2
+Sport
+Iz kojeg mjesta je američki košarkaški klub "Cavaliers"?
+Chicago,Milwaukee,Los Angeles,Cleveland,4
+Sport
+U kojem je nogometnom klubu igrao Ivan Rakitić prije nego što je otišao u FC Barcelonu?
+Valencia,Sevilla,Tottenham,Napoli,2
+Sport
+Nogometni transfer kojeg igrača je najskuplji u povijesti?
+Kyliana Mbappea,Cristiana Ronalda,Neymar Jr.,Gareth Bale,3
+Sport
+Koja su naša braća osvojila zlato na olimpijskim igrama?
+Skelin,Sinković,Šain,Horvat,2
+Sport
+Koji vozač Formule 1 ima najviše osvojenih prvih mjesta, njih 7?
+Michael Schumacher,Lewis Hamilton,Niki Lauda,Sebastian Vettel,1
+Umjetnost
+Tko je naslikao "Rođenje Venere"?
+Michelangelo,Leonardo da Vinci,Sandro Boticelli,Raphael,3

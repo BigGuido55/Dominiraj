@@ -49,5 +49,10 @@ namespace DominoWebApi.Database
         {
             throw new NotImplementedException();
         }
+
+        public async Task<List<String>> GetAllCategories()
+        {
+            return await _context.Questions.Select(s => s.Category).Distinct().ToListAsync();
+        }
     }
 }

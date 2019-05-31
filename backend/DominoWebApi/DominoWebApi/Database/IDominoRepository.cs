@@ -14,5 +14,6 @@ namespace DominoWebApi.Database
         Task AddScore(Score score);
         Task<List<Score>> GetHighScore();
         Task<List<Score>> GetPlayerScores(Guid PlayerId);
+        Task<List<String>> GetAllCategories();
     }
 }
