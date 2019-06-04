@@ -50,18 +50,22 @@ class homepage extends Component {
         var prva = this.state.niz[r] % 10;
         var druga = (this.state.niz[r]-prva) / 10;
         this.state.niz.splice(r, 1)
-        console.log(prva, druga);
-        console.log(this.state.niz);
+        //console.log(prva, druga);
+        //console.log(this.state.niz);
         
+        if (this.state.sve.length >= 5){
+            alert("Imate dovoljno pločica, ne može više!");
+            return;
+        }
+
         var s = this.state.sve;
         s.push([prva, druga]);
-        console.log(s);
+        //console.log(s);
 
         this.setState({
             domina: true,
             kat1: prva,
-            kat2: druga,
-            
+            kat2: druga,            
             sve: s        
         });
         
