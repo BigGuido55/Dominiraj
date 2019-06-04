@@ -27,6 +27,15 @@ namespace DominoWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("DominoPolicy",
+                builder =>
+                {
+                    builder.AllowAnyOrigin();
+                });
+            });
+
             services.AddDbContext<DominoDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultString"]));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddTransient<IDominoRepository, DominoRepository>();
@@ -44,6 +53,7 @@ namespace DominoWebApi
                 app.UseHsts();
             }
 
+            app.UseCors("DominoPolicy");
             app.UseHttpsRedirection();
             app.UseMvc();
         }

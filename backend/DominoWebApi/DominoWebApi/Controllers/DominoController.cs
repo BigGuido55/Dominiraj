@@ -45,6 +45,7 @@ namespace DominoWebApi.Controllers
             return await _context.GetRandomQuestionByCategory(category);
         }
 
+        // GET api/domino/categories
         [HttpGet]
         [Route("categories")]
         public async Task<ActionResult<List<String>>> GetAllCategories(string category)
@@ -59,10 +60,14 @@ namespace DominoWebApi.Controllers
             return await _context.GetHighScore();
         }
 
-        // POST api/domino
+        // POST api/domino/score
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("score")]
+        public int PostScore([FromBody] int points)
         {
+            Score newScore = new Score(Guid.NewGuid(), points);
+            _context.AddScore(newScore);
+            return points;
         }
 
         // PUT api/domino/5
