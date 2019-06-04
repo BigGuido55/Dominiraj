@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import '../App.css';
 import { Button, Container, ButtonGroup } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import QuestionModal from "./questionModal";
 import Domina from "./domina";
 const background = require('../igra.jpg');
 const divStyle = {
@@ -98,9 +97,6 @@ class homepage extends Component {
                     <div style={{"position": "absolute", "right": "0",  "margin-left": "20px", "top":"10%"}}>
                         <Button id = "poc" onClick={this.giveStarters} >Uzmi početne</Button>
                     </div>
-                    <Button style={{"position":"relative", "top":"50%", "left":"50%"}} onClick={this.toggle}>
-                        Pitanje
-                    </Button>
 
                     <Container style={{"position":"absolute", "bottom":"10%", "left":"10%"}}>
                     <ButtonGroup>
@@ -110,10 +106,6 @@ class homepage extends Component {
                     </ButtonGroup>
                     </Container>
                     </div>
-               
-                <QuestionModal
-                    modal={this.state.modal}
-                    toggle={this.toggle} />
                 
 
                 

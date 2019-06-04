@@ -6,42 +6,54 @@ import {
   ModalBody,
   Container,
   ModalFooter, 
-  Button, Label, ButtonGroup
+  Button, ButtonGroup
 } from "reactstrap";
 
 class QuestionModal extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+          odgovori: []
+        };
+    }
+
+    handlePicked = (e) => {
+        console.log(e.target.value);
+        console.log(this.props.correctAnswer);
+        if (e.target.value === this.props.question.correctAnswer){
+            alert("Bravo!");
+        }
+        else {
+            alert("Loše i loše!");
+        }
+        this.props.toggle();
+    }
   
     render() {
         return(
             <Modal 
               isOpen={this.props.modal}
               toggle={this.props.toggle}>
-              <ModalHeader toggle={this.props.toggle}>Pitanje iz teme: </ModalHeader>
+              <ModalHeader toggle={this.props.toggle}>Pitanje iz teme: {this.props.question.category}</ModalHeader>
               <ModalBody >
                 <Container>
-                    <Label>
-                        Ovdje ide pitanje
-                    </Label>
+                    <div>
+                        {this.props.question.questionText}
+                    </div>
                 </Container>
               </ModalBody>
                 <ModalFooter >
                     <div>
-                    <ButtonGroup className="col-md-12 ">
-                        <Button color="primary" >
-                            Odgovor 1
-                        </Button>
-                        <Button color="primary-bez" >
-                            Odgovor 2
-                        </Button>                  
-                    </ButtonGroup>
-                    <ButtonGroup className="col-md-12 ">
-                        <Button color="primary">
-                            Odgovor 3
-                        </Button>
-                        <Button color="primary-bez">
-                            Odgovor 4
-                        </Button>
-                    </ButtonGroup>
+                    
+                    {this.props.odgovori.map(o => (   
+                        <ButtonGroup  className="col-md-6 col-md-offset-6" >                            
+                               <Button value = {o} color="primary-bez" onClick = {this.handlePicked}>
+                                {o}
+                                </Button>
+                        </ButtonGroup>
+                    ))}                  
+                    
+                    
                   </div>
                 </ModalFooter>
             </Modal>

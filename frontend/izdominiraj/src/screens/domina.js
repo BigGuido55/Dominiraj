@@ -6,6 +6,7 @@ import {
   
   Button
 } from "reactstrap";
+import QuestionModal from "./questionModal";
 import axios from "axios";
 
 class Domina extends Component {
@@ -13,9 +14,18 @@ class Domina extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            question: {}
+            question: {},
+            odgovori: [],
+            modal: false
         };
     }
+
+    toggle = () => {
+        
+        this.setState({
+          modal: !this.state.modal            
+        });
+    };
 
     handleGetQuestion = e =>{
         var cat = e.target.value;
@@ -24,20 +34,37 @@ class Domina extends Component {
             console.log(ress);
         }*/
         console.log(cat);
-        /*if (ress.length > 0){
+        if (typeof(cat) !== 'undefined'){
             axios({
                 method: "GET",
                 url:
-                  "http://localhost:59487/api/domino/question?category=" + ress,
+                  "http://localhost:59487/api/domino/question?category=" + cat,
                 headers: { "Content-Type": "application/json"}
               }).then(res => {
                 console.log(
                   "Ovo su podaci koje dobiješ nazad od servera. ",
                   res.data
-                );          
+                ); 
+                var array = [];
+                array.push(res.data.wrongAnswer1);
+                array.push(res.data.wrongAnswer2);
+                array.push(res.data.wrongAnswer3);
+                array.push(res.data.correctAnswer); 
+                //console.log(array);
+
+                for (var i = array.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+
+
                 this.setState({
-                  question: res.data
+                  question: res.data,
+                  odgovori: array
                 });
+
               }).catch(err => {
                 if (!err.response) {
                   alert('Nije moguće komunicirati sa poslužiteljem! Provjerite da li je upaljen..');
@@ -50,7 +77,9 @@ class Domina extends Component {
                 }    
                 alert('Nepoznata greška! ' + JSON.stringify(err));
               });
-        }*/
+            console.log("prošao");
+            this.toggle();
+        }
         
     }
 
@@ -78,7 +107,6 @@ class Domina extends Component {
                     </Button> : null}
 
 
-
                 {this.props.druga === 1 ? <Button value="Umjetnost"  size="lg" className="btn-art lg" onClick={this.handleGetQuestion}>
                         <i class="fa fa-paint-brush"></i>
                     </Button> : null}
@@ -98,6 +126,12 @@ class Domina extends Component {
                         <i class="fa fa-heart"></i>
                     </Button> : null}
                 </ButtonGroup>
+
+                <QuestionModal
+                    modal={this.state.modal}
+                    toggle={this.toggle}
+                    question={this.state.question}
+                    odgovori={this.state.odgovori} />
             </Container>
 
         );
