@@ -27,12 +27,19 @@ class Domina extends Component {
         });
     };
 
-    handleGetQuestion = e =>{
-        var cat = e.target.value;
+    handleGetQuestion = (cat, broj) =>{
+        if (broj !== this.props.zadnji && this.props.zadnji !== 0){
+            alert("NE MOŽE");
+            return;
+
+        }
+
+        
         /*if (cat !== null){
             var ress = cat.substring(0, cat.length - 1);
             console.log(ress);
         }*/
+        
         console.log(cat);
         if (typeof(cat) !== 'undefined'){
             axios({
@@ -77,7 +84,7 @@ class Domina extends Component {
                 }    
                 alert('Nepoznata greška! ' + JSON.stringify(err));
               });
-            console.log("prošao");
+            //console.log("prošao");
             this.toggle();
         }
         
@@ -85,44 +92,44 @@ class Domina extends Component {
 
     render() {
         return(
-            <Container >
+            <Container style={{"width":"fit-content"}} id={this.props.identifikator}>
                 <ButtonGroup  >
-                {this.props.prva === 1 ? <Button value="Umjetnost" size="lg" className="btn-art lg" onClick={this.handleGetQuestion}>
+                {this.props.prva === 1 ? <Button size="lg" className="btn-art lg" onClick={() => this.handleGetQuestion("Umjetnost",this.props.prva)}>
                         <i class="fa fa-paint-brush"></i>
                     </Button> : null}
-                {this.props.prva === 2 ? <Button value="Geografija" size="lg" className="btn-geo lg" onClick={this.handleGetQuestion}>
+                {this.props.prva === 2 ? <Button size="lg" className="btn-geo lg" onClick={() => this.handleGetQuestion("Geografija",this.props.prva)}>
                         <i class="fa fa-globe"> </i>
                     </Button> : null}
-                {this.props.prva === 3 ? <Button value="Sport" size="lg" className="btn-sport lg" onClick={this.handleGetQuestion}>
+                {this.props.prva === 3 ? <Button size="lg" className="btn-sport lg" onClick={() => this.handleGetQuestion("Sport",this.props.prva)}>
                         <i class="fa fa-soccer-ball-o"></i>
                     </Button> : null}
-                {this.props.prva === 4 ? <Button value="Povijest" size="lg" className="btn-his lg" onClick={this.handleGetQuestion} >
+                {this.props.prva === 4 ? <Button size="lg" className="btn-his lg" onClick={() => this.handleGetQuestion("Povijest",this.props.prva)} >
                         <i class="fa fa-history"></i>
                     </Button> : null}
-                {this.props.prva === 5 ? <Button value="Znanost" size="lg" className="btn-sci lg" onClick={this.handleGetQuestion}>
+                {this.props.prva === 5 ? <Button size="lg" className="btn-sci lg" onClick={() => this.handleGetQuestion("Znanost",this.props.prva)}>
                         <i class="fa fa-calculator"></i>
                     </Button> : null}
-                {this.props.prva === 6 ? <Button value="Hrvatska" size="lg" className="btn-cro lg" onClick={this.handleGetQuestion}>
+                {this.props.prva === 6 ? <Button size="lg" className="btn-cro lg" onClick={() => this.handleGetQuestion("Hrvatska",this.props.prva)}>
                         <i class="fa fa-heart"></i>
                     </Button> : null}
 
 
-                {this.props.druga === 1 ? <Button value="Umjetnost"  size="lg" className="btn-art lg" onClick={this.handleGetQuestion}>
+                {this.props.druga === 1 ? <Button size="lg" className="btn-art lg" onClick={() => this.handleGetQuestion("Umjetnost",this.props.druga)}>
                         <i class="fa fa-paint-brush"></i>
                     </Button> : null}
-                {this.props.druga === 2 ? <Button value="Geografija" size="lg" className="btn-geo lg" onClick={this.handleGetQuestion}>
+                {this.props.druga === 2 ? <Button size="lg" className="btn-geo lg" onClick={() => this.handleGetQuestion("Geografija",this.props.druga)}>
                         <i class="fa fa-globe"></i>
                     </Button> : null}
-                {this.props.druga === 3 ? <Button value="Sport" size="lg" className="btn-sport lg" onClick={this.handleGetQuestion}>
+                {this.props.druga === 3 ? <Button size="lg" className="btn-sport lg" onClick={() => this.handleGetQuestion("Sport",this.props.druga)}>
                         <i class="fa fa-soccer-ball-o"></i>
                     </Button> : null}
-                {this.props.druga === 4 ? <Button value="Povijest" size="lg" className="btn-his lg" onClick={this.handleGetQuestion}>
+                {this.props.druga === 4 ? <Button size="lg" className="btn-his lg" onClick={() => this.handleGetQuestion("Povijest",this.props.druga)}>
                         <i class="fa fa-history"></i>
                     </Button> : null}
-                {this.props.druga === 5 ? <Button value="Znanost" size="lg" className="btn-sci lg" onClick={this.handleGetQuestion}>
+                {this.props.druga === 5 ? <Button size="lg" className="btn-sci lg" onClick={() => this.handleGetQuestion("Znanost",this.props.druga)}>
                         <i class="fa fa-calculator"></i>
                     </Button> : null}
-                {this.props.druga === 6 ? <Button value="Hrvatska" size="lg" className="btn-cro lg" onClick={this.handleGetQuestion}>
+                {this.props.druga === 6 ? <Button size="lg" className="btn-cro lg" onClick={() => this.handleGetQuestion("Hrvatska",this.props.druga)}>
                         <i class="fa fa-heart"></i>
                     </Button> : null}
                 </ButtonGroup>
@@ -131,7 +138,14 @@ class Domina extends Component {
                     modal={this.state.modal}
                     toggle={this.toggle}
                     question={this.state.question}
-                    odgovori={this.state.odgovori} />
+                    odgovori={this.state.odgovori}
+                    handleScoreChange={this.props.handleScoreChange} 
+                    moveDomina={this.props.moveDomina}
+                    identifikator={this.props.identifikator}
+                    prva={this.props.prva}
+                    druga={this.props.druga}
+                    zadnji={this.props.zadnji}
+                    setZadnji={this.props.setZadnji}/>
             </Container>
 
         );

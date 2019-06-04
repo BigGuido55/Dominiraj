@@ -59,35 +59,40 @@
 
 .btn-art{
   margin-left: '10px';
+  width: 50px;
   background-color: #fff099 !important;
   color: #000000 !important;
 }
 
 .btn-geo{
   margin-left: '10px';
+  width: 50px;
   background-color: #c92828 !important;
   color: #000000 !important;
 }
 
 .btn-sport{
+  width: 50px;
   margin-left: '10px';
   background-color: #99d6ff !important;
   color: #000000 !important;
 }
 
 .btn-his{
+  width: 50px;
   margin-left: '10px';
   background-color: #f8aa35 !important;
   color: #000000 !important;
 }
 
 .btn-sci{
-  margin-left: '10px';
+  width: 50px;
   background-color: #79d279 !important;
   color: #000000 !important;
 }
 
 .btn-cro{
+  width: 50px;
   margin-left: '10px';
   background-color: #ffccff !important;
   color: #000000 !important;

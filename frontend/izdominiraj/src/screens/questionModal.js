@@ -21,10 +21,20 @@ class QuestionModal extends Component {
         console.log(e.target.value);
         console.log(this.props.correctAnswer);
         if (e.target.value === this.props.question.correctAnswer){
-            alert("Bravo!");
+            console.log(this.props.zadnji);
+            console.log('------------');
+            this.props.handleScoreChange(5);
+            this.props.moveDomina(this.props.identifikator);
+            if (this.props.prva !== this.props.zadnji && this.props.zadnji !== 0){
+                this.props.setZadnji(this.props.prva);
+            }
+            else {
+                this.props.setZadnji(this.props.druga);
+            }
+            console.log(this.props.zadnji);
         }
         else {
-            alert("Loše i loše!");
+            this.props.handleScoreChange(-2);
         }
         this.props.toggle();
     }
