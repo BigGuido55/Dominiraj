@@ -3,6 +3,7 @@ import '../App.css';
 import { Button, Container, ButtonGroup } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import QuestionModal from "./questionModal";
+import Domina from "./domina";
 const background = require('../igra.jpg');
 const divStyle = {
     
@@ -16,21 +17,55 @@ class homepage extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-          modal: false
+          modal: false,
+          domina: false,
+          kat1: 0,
+          kat2: 0,
+          niz: [],
+          sve:[]
         };
+        var i, j;
+        var domine = [];
+        for (i = 1; i < 7; i++) { 
+            for (j = 1; j < 7; j++){
+                domine[(i-1)*6 + j-1] = i * 10 + j;
+            }
+        }
+        this.state.niz = domine;
+        //this.giveRandom();
+        //this.giveRandom();
+        //this.giveRandom();
       }
-
-    handleInstructions = () => {
-        this.props.history.push('/instructions');
+    
+    giveStarters = () => {
+        this.giveRandom();
+        this.giveRandom();
+        this.giveRandom();
+        document.getElementById("poc").disabled=true;
     }
 
-    handleHighscores = () => {
-        this.props.history.push('/highscores');
-    }
 
-    handleStart = () => {
-        this.props.history.push('/start');
-    }
+    giveRandom = () => {
+        var r = Math.floor(Math.random() * this.state.niz.length);
+        var prva = this.state.niz[r] % 10;
+        var druga = (this.state.niz[r]-prva) / 10;
+        this.state.niz.splice(r, 1)
+        console.log(prva, druga);
+        console.log(this.state.niz);
+        
+        var s = this.state.sve;
+        s.push([prva, druga]);
+        console.log(s);
+
+        this.setState({
+            domina: true,
+            kat1: prva,
+            kat2: druga,
+            
+            sve: s        
+        });
+        
+    }   
 
     toggle = () => {
         
@@ -53,42 +88,33 @@ class homepage extends Component {
                     <div style={{"position": "absolute", "left": "0",  "margin-left": "20px", "top":"2%"}}>
                         <Button onClick={this.handleBack} >Natrag</Button>
                     </div>
+                    <div style={{"position": "absolute", "right": "0",  "margin-left": "20px", "top":"2%"}}>
+                        <Button onClick={this.giveRandom} >Nova pločica</Button>
+                    </div>
+                    <div style={{"position": "absolute", "right": "0",  "margin-left": "20px", "top":"10%"}}>
+                        <Button id = "poc" onClick={this.giveStarters} >Uzmi početne</Button>
+                    </div>
                     <Button style={{"position":"relative", "top":"50%", "left":"50%"}} onClick={this.toggle}>
                         Pitanje
                     </Button>
+
+                    <Container style={{"position":"absolute", "bottom":"10%", "left":"10%"}}>
+                    <ButtonGroup>
+                    {this.state.sve.map(jedan => (                               
+                               this.state.domina ? <Domina prva={jedan[0]} druga={jedan[1]}/> : null
+                    ))}
+                    </ButtonGroup>
+                    </Container>
                     </div>
                
                 <QuestionModal
                     modal={this.state.modal}
                     toggle={this.toggle} />
-
-                <Container style={{"position":"absolute", "bottom":"5%"}} className="App-tekst">
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                </Container>
-                <ButtonGroup style={{"position":"absolute", "right":"5%", "bottom":"12%" }}>
-                <Button size="lg" className="btn-art" >
-                    <i class="fa fa-paint-brush"></i>
-                </Button>
-                <Button size="lg" className="btn-geo lg">
-                    <i class="fa fa-globe"></i>
-                </Button>
-                <Button size="lg" className="btn-sport lg">
-                    <i class="fa fa-soccer-ball-o"></i>
-                </Button>
-                <Button size="lg" className="btn-his lg">
-                    <i class="fa fa-history"></i>
-                </Button>
-                <Button size="lg" className="btn-sci lg">
-                    <i class="fa fa-calculator"></i>
-                </Button>
-                <Button size="lg" className="btn-cro lg">
-                    <i class="fa fa-heart"></i>
-                </Button>
                 
-                </ButtonGroup>
+
+                
+                
+                
             </div>
 
 
