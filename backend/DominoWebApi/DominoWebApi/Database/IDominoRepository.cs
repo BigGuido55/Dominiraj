@@ -15,5 +15,6 @@ namespace DominoWebApi.Database
         Task<List<Score>> GetHighScore();
         Task<List<Score>> GetPlayerScores(Guid PlayerId);
         Task<List<String>> GetAllCategories();
+        Task<List<Score>> GetTop(int number);
     }
 }

@@ -54,5 +54,9 @@ namespace DominoWebApi.Database
         {
             return await _context.Questions.Select(s => s.Category).Distinct().ToListAsync();
         }
+        public async Task<List<Score>> GetTop(int number)
+        {
+            return await _context.Highscore.OrderByDescending(s => s.Points).Take(number).ToListAsync();
+        }
     }
 }

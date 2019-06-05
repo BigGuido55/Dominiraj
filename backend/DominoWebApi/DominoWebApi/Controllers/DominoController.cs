@@ -22,19 +22,10 @@ namespace DominoWebApi.Controllers
 
         // GET api/domino
         [HttpGet]
-        public List<Score> Get()
-        {
-            return new List<Score>();
-            /*Guid guid = Guid.NewGuid();
-            Random rand = new Random();
-            List<Score> scores = new List<Score>();
-            for (int i = 0; i < 3; i++)
-            {
-                Score score = new Score(guid, rand.Next(101));
-                await _context.AddScore(score);
-                scores.Add(score);
-            }
-            return scores;*/
+        [Route("highscore")]
+        public async Task<List<Score>> GetTop100()
+        { 
+            return await _context.GetTop(100);
         }
 
         // GET api/domino/question?category=...
@@ -54,10 +45,16 @@ namespace DominoWebApi.Controllers
         }
 
         // GET api/domino/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<List<Score>>> Get(int id)
+        [HttpGet("{num}")]
+        public async Task Get(int num)
         {
-            return await _context.GetHighScore();
+            Guid player = Guid.NewGuid();
+            Random rand = new Random();
+
+            for(int i = 0; i < num; i++)
+            {
+                await _context.AddScore(new Score(player, rand.Next(101)));
+            }
         }
 
         // POST api/domino/score
