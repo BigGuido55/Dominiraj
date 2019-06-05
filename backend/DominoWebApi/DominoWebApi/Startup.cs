@@ -32,7 +32,7 @@ namespace DominoWebApi
                 options.AddPolicy("DominoPolicy",
                 builder =>
                 {
-                    builder.AllowAnyOrigin();
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                 });
             });
 
