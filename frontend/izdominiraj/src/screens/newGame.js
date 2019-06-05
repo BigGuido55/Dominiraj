@@ -3,6 +3,7 @@ import '../App.css';
 import { Button, Container, ButtonGroup } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Domina from "./domina";
+import axios from "axios";
 const background = require('../igra.jpg');
 const divStyle = {
     
@@ -27,7 +28,9 @@ class homepage extends Component {
           bottom: 200,
           left: 0,
           i: 1,
-          zadnji: 0
+          zadnji: 0,
+          ruka: 0,
+          koliko_pomaknutih : 0
         };
         var i, j;
         var domine = [];
@@ -37,12 +40,10 @@ class homepage extends Component {
             }
         }
         this.state.niz = domine;
-        //this.giveRandom();
-        //this.giveRandom();
-        //this.giveRandom();
       }
     
     moveDomina = (id) => {
+
         document.getElementById(id).style.position = "absolute";
         if (this.state.i===1){
             document.getElementById(id).style.bottom = this.state.bottom + 'px';
@@ -77,9 +78,41 @@ class homepage extends Component {
         this.setState({
             i : this.state.i + 1
         });
+
+        if (this.state.i === 11){
+            alert("Pobjeda!");
+            //tu ide poziv metode
+            /*axios({
+                method: "POST",
+                url:
+                  "http://localhost:59487/api/domino/score",
+                headers: { "Content-Type": "application/json"},
+                body: {
+                    points: this.state.score
+                }
+              }).then(res => {
+                this.history.push('/');
+
+              }).catch(err => {
+                if (!err.response) {
+                  alert('Nije moguće komunicirati sa poslužiteljem! Provjerite da li je upaljen..');
+                  return;
+                }    
+                const code = err.response.status;    
+                if (code >= 500) {
+                    alert('Problem sa serverom! Pogledajte ispise..');
+                    return;
+                }    
+                alert('Nepoznata greška! ' + JSON.stringify(err));
+              });
+            console.log("prošao");*/
+        }
         
     }
 
+    componentDidMount = () =>{
+        document.getElementById("jedna").disabled=true;
+    }
 
 
     giveStarters = () => {
@@ -87,10 +120,17 @@ class homepage extends Component {
         this.giveRandom();
         this.giveRandom();
         document.getElementById("poc").disabled=true;
+        document.getElementById("jedna").disabled=false;
     }
 
 
     giveRandom = () => {
+        
+        if (this.state.ruka === 6){
+            //slati score AXIOS
+            alert("Previše u ruci, ne može više!");
+            return;
+        }
         var r = Math.floor(Math.random() * this.state.niz.length);
         var prva = this.state.niz[r] % 10;
         var druga = (this.state.niz[r]-prva) / 10;
@@ -108,14 +148,23 @@ class homepage extends Component {
             kat1: prva,
             kat2: druga,            
             sve: s,
-            r: r        
+            r: r,
+            ruka: this.state.ruka + 1        
         });
+        console.log(this.state.ruka);
         
     }   
 
     setZadnji = (zad) => {
         this.setState({
             zadnji: zad
+
+        });
+    }
+
+    smanji = (zad) => {
+        this.setState({
+            ruka: this.state.ruka - 1
 
         });
     }
@@ -149,23 +198,27 @@ class homepage extends Component {
                     <div style={{"position": "absolute", "left": "0",  "margin-left": "20px", "top":"2%"}}>
                         <Button onClick={this.handleBack} >Natrag</Button>
                     </div>
-                    <div style={{"position": "absolute", "right": "0",  "margin-left": "20px", "top":"2%"}}>
-                        <Button onClick={this.giveRandom} >Nova pločica</Button>
+                    <div style={{"position": "absolute", "right": "10%",  "margin-left": "20px", "top":"2%"}}>
+                        <Button color="danger" id = "jedna" onClick={this.giveRandom} >Nova pločica</Button>
                     </div>
-                    <div style={{"position": "absolute", "right": "0",  "margin-left": "20px", "top":"10%"}}>
-                        <Button id = "poc" onClick={this.giveStarters} >Uzmi početne</Button>
+                    <div style={{"position": "absolute", "right": "10%",  "margin-left": "20px", "top":"10%"}}>
+                        <Button color="danger" id = "poc" onClick={this.giveStarters} >Uzmi početne</Button>
                     </div>
 
                     <Container style={{"position":"absolute", "bottom":"10%", "left":"10%"}}>
                     <ButtonGroup style={{"position":"fixed", "height":"50px"}}>
                     {this.state.sve.map((jedan, index) => (                            
-                            this.state.domina ? <Domina identifikator = {index} zadnji={this.state.zadnji} setZadnji = {this.setZadnji} prva={jedan[0]} druga={jedan[1]} moveDomina={this.moveDomina} handleScoreChange={this.handleScoreChange}/> : null
+                            this.state.domina ? <Domina identifikator = {index} smanji={this.smanji} zadnji={this.state.zadnji} setZadnji = {this.setZadnji} prva={jedan[0]} druga={jedan[1]} moveDomina={this.moveDomina} handleScoreChange={this.handleScoreChange}/> : null
                               
                     ))}
-                    </ButtonGroup>
+                    </ButtonGroup>                   
 
-                    
+                    </Container>
 
+                    <Container style={{"position":"absolute", "bottom":"30%", "right":"25%", width:"15%", height:"40%"}} className="App-tekst">
+                        <h3 style={{ color: "#000000" }}>
+                            Trenutni rezultat: {this.state.score}
+                        </h3>
                     </Container>
                     </div>
                 

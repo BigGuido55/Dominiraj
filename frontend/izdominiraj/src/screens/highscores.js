@@ -23,13 +23,13 @@ class Highscores extends Component {
                         <Button onClick={this.handleBack} >Natrag</Button>
                 </div>
                 <div>
-                <Table bordered hover dark responsive style={{"position": "fixed", "width": "80%", "top":"40%", "left": "10%"}} >
+                <Table bordered hover dark responsive style={{"position": "fixed", "width": "80%", "top":"30%", "left": "10%"}} >
                     <thead>
                         
                     <tr>
                         <th>Mjesto</th>
-                        <th>Id</th>
-                        <th>Rezultat</th>
+                        <th>Id igrača</th>
+                        <th>Bodovi</th>
                        
                     </tr>
                     </thead>
@@ -48,16 +48,6 @@ class Highscores extends Component {
                         <th scope="row">3</th>
                         <td>Jacob</td>
                         <td>12345</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Jacob</td>
-                        <td>234567</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Jacob</td>
-                        <td>234567</td>
                     </tr>
                     
                     </tbody>

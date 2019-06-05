@@ -33,12 +33,6 @@ class Domina extends Component {
             return;
 
         }
-
-        
-        /*if (cat !== null){
-            var ress = cat.substring(0, cat.length - 1);
-            console.log(ress);
-        }*/
         
         console.log(cat);
         if (typeof(cat) !== 'undefined'){
@@ -145,7 +139,8 @@ class Domina extends Component {
                     prva={this.props.prva}
                     druga={this.props.druga}
                     zadnji={this.props.zadnji}
-                    setZadnji={this.props.setZadnji}/>
+                    setZadnji={this.props.setZadnji}
+                    smanji={this.props.smanji}/>
             </Container>
 
         );

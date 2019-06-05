@@ -21,6 +21,7 @@ class QuestionModal extends Component {
         console.log(e.target.value);
         console.log(this.props.correctAnswer);
         if (e.target.value === this.props.question.correctAnswer){
+            this.props.smanji();
             console.log(this.props.zadnji);
             console.log('------------');
             this.props.handleScoreChange(5);
