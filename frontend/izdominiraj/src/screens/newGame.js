@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import '../App.css';
-import { Button, Container, ButtonGroup } from "reactstrap";
+import { Button, Container, ButtonGroup, Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Domina from "./domina";
 import axios from "axios";
@@ -30,7 +30,9 @@ class homepage extends Component {
           i: 1,
           zadnji: 0,
           ruka: 0,
-          koliko_pomaknutih : 0
+          koliko_pomaknutih : 0,
+          kraj: false,
+          cilj: ''
         };
         var i, j;
         var domine = [];
@@ -79,19 +81,23 @@ class homepage extends Component {
             i : this.state.i + 1
         });
 
-        if (this.state.i === 11){
-            alert("Pobjeda!");
+        if (this.state.i === 3){
+            alert("Bravo! Pobjeda!");
+            this.setState({
+                cilj : 'pobjedili'
+            });
+            this.toggleKraj();
             //tu ide poziv metode
             /*axios({
                 method: "POST",
                 url:
                   "http://localhost:59487/api/domino/score",
                 headers: { "Content-Type": "application/json"},
-                body: {
+                data: {
                     points: this.state.score
                 }
               }).then(res => {
-                this.history.push('/');
+                
 
               }).catch(err => {
                 if (!err.response) {
@@ -128,29 +134,33 @@ class homepage extends Component {
         
         if (this.state.ruka === 6){
             //slati score AXIOS
-            alert("Previše u ruci, ne može više!");
+            alert("Previše pločica u ruci, ovu igru gubite!");
+            this.setState({
+                cilj: 'izgubili'
+            });
+            this.toggleKraj();            
             return;
         }
         var r = Math.floor(Math.random() * this.state.niz.length);
         var prva = this.state.niz[r] % 10;
         var druga = (this.state.niz[r]-prva) / 10;
         this.state.niz.splice(r, 1)
-        //console.log(prva, druga);
-        //console.log(this.state.niz);
         
 
         var s = this.state.sve;
         s.push([prva, druga]);
-        //console.log(s);
-
-        this.setState({
-            domina: true,
-            kat1: prva,
-            kat2: druga,            
-            sve: s,
-            r: r,
-            ruka: this.state.ruka + 1        
-        });
+        //console.log(this.state.i);
+        
+            this.setState({
+                domina: true,
+                kat1: prva,
+                kat2: druga,            
+                sve: s,
+                r: r,
+                ruka: this.state.ruka + 1,
+                //score: this.state.score - 1        
+            });
+       
         console.log(this.state.ruka);
         
     }   
@@ -174,6 +184,15 @@ class homepage extends Component {
         this.setState({
           modal: !this.state.modal            
         });
+    };
+
+    toggleKraj = () => {
+        
+        this.setState({
+          kraj: !this.state.kraj            
+        });
+        
+        
     };
 
     handleBack =() => {
@@ -220,9 +239,28 @@ class homepage extends Component {
                             Trenutni rezultat: {this.state.score}
                         </h3>
                     </Container>
+
+                    <Modal 
+                        isOpen={this.state.kraj}
+                        toggle={this.toggleKraj}>
+                        <ModalHeader toggle={this.toggleKraj}>Kraj igre</ModalHeader>
+                        <ModalBody >
+                            <Container>
+                                <div>
+                                    Ovu igru ste {this.state.cilj}! Vaš rezultat je {this.state.score}
+                                </div>
+                            </Container>
+                        </ModalBody>
+                            <ModalFooter >  
+                            <div >
+                                 <Button onClick={this.handleBack} >Povratak na početni ekran</Button>
+                            </div>                  
+                            </ModalFooter>
+                        </Modal>
+
                     </div>
                 
-
+                    
                 
                 
                 
