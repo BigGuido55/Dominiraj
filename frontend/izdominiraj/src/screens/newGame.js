@@ -86,18 +86,17 @@ class homepage extends Component {
             this.setState({
                 cilj : 'pobjedili'
             });
-            this.toggleKraj();
             //tu ide poziv metode
-            /*axios({
+            axios({
                 method: "POST",
-                url:
-                  "http://localhost:59487/api/domino/score",
-                headers: { "Content-Type": "application/json"},
+                url:"http://localhost:59487/api/domino/score",
                 data: {
                     points: this.state.score
-                }
-              }).then(res => {
+                },
+                headers: { 'Accept': 'application/json', "Content-Type": "application/json"}
                 
+              }).then(res => {
+                console.log("uspio");
 
               }).catch(err => {
                 if (!err.response) {
@@ -111,7 +110,9 @@ class homepage extends Component {
                 }    
                 alert('Nepoznata greška! ' + JSON.stringify(err));
               });
-            console.log("prošao");*/
+              
+            this.toggleKraj();
+            console.log("prošao");
         }
         
     }
@@ -133,7 +134,30 @@ class homepage extends Component {
     giveRandom = () => {
         
         if (this.state.ruka === 6){
-            //slati score AXIOS
+            axios({
+                method: 'POST',
+                url: 'http://localhost:59487/api/domino/score',
+                data: {
+                    points: this.state.score
+                },
+                headers: {'Accept': 'application/json', "Content-Type": "application/json"}
+                
+              }).then(res => {
+                
+
+              }).catch(err => {
+                if (!err.response) {
+                  alert('Nije moguće komunicirati sa poslužiteljem! Provjerite da li je upaljen..');
+                  return;
+                }    
+                const code = err.response.status;    
+                if (code >= 500) {
+                    alert('Problem sa serverom! Pogledajte ispise..');
+                    return;
+                }    
+                alert('Nepoznata greška! ' + JSON.stringify(err));
+              });
+            console.log("gksjdglkgjsdgkljs");
             alert("Previše pločica u ruci, ovu igru gubite!");
             this.setState({
                 cilj: 'izgubili'
@@ -149,7 +173,6 @@ class homepage extends Component {
 
         var s = this.state.sve;
         s.push([prva, druga]);
-        //console.log(this.state.i);
         
             this.setState({
                 domina: true,
@@ -160,8 +183,6 @@ class homepage extends Component {
                 ruka: this.state.ruka + 1,
                 //score: this.state.score - 1        
             });
-       
-        console.log(this.state.ruka);
         
     }   
 
@@ -204,7 +225,6 @@ class homepage extends Component {
         this.setState({
             score: this.state.score + s
         });
-        //console.log(this.state.score);
     }
 
     render() {

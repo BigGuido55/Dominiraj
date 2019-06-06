@@ -3,6 +3,7 @@ import "../App.css";
 import {
   Table, Button
 } from "reactstrap";
+import axios from "axios";
 const background = require('../domino.jpg');
 const divStyle = {
     
@@ -13,8 +14,45 @@ const divStyle = {
 };
 
 class Highscores extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+          scores: []
+        };
+    }
+
     handleBack =() => {
         this.props.history.push('/');
+    }
+
+    componentDidMount = () =>{
+        axios({
+            method: "GET",
+            url:
+              "http://localhost:59487/api/domino/highscore",
+            headers: { "Content-Type": "application/json"}
+          }).then(res => {
+            this.setState({
+                scores: res.data
+            });
+            console.log(
+              "Ovo su podaci koje dobiješ nazad od servera. ",
+              res.data
+            ); 
+          }).catch(err => {
+            if (!err.response) {
+              alert('Nije moguće komunicirati sa poslužiteljem! Provjerite da li je upaljen..');
+              return;
+            }    
+            const code = err.response.status;    
+            if (code >= 500) {
+                alert('Problem sa serverom! Pogledajte ispise..');
+                return;
+            }    
+            alert('Nepoznata greška! ' + JSON.stringify(err));
+          });
+        console.log(this.state.scores);
+
     }
     render() {
         return(
@@ -34,21 +72,13 @@ class Highscores extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>12345</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Jacob</td>
-                        <td>12345</td>
-                    </tr>
+                    {this.state.scores.map((s, index) => (                            
+                            <tr>
+                            <th scope="row">{index+1}</th>
+                            <td>{s.playerId}</td>
+                            <td>{s.points}</td>
+                        </tr>
+                    ))}
                     
                     </tbody>
                 </Table>
