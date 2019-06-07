@@ -33,24 +33,21 @@ class Instructions extends Component {
                     <br/>
                     <h5 style={{ color: "#000000" }}>
                         Žuto polje predstavlja pitanja iz umjetnosti, crveno geografiju, plavo sport, zeleno znanost, narančasto povijest, 
-                        a rozo pitanja o Republici Hrvatskoj. Igrač na početku dobije pet pločica i jednu postavljenu u 
-                        polje za igranje. Klikom na jednu od pet ponuđenih pločica igrač izabire onu koju želi složiti na 
-                        posljednju postavljenu u polje. 
+                        a rozo pitanja o Republici Hrvatskoj. Igrač na početku uzima tri pločice. Pločica se bira pritiskom na gumb jedne
+                        polovice pločice. Prvu pločicu može odabrati bilo koju dok ostale može birati samo onu kategoriju koja je zadnja
+                        u nizu domina, nebitno na kojoj je polovici pločice koju bira. Ukoliko se odgovori točno na pitanje, pločica se
+                        miče iz "ruke" i stavlja se na polje u niz.
                     </h5>
                     <br/>
                 
                     <h5 style={{ color: "#000000" }}> 
-                        Može složiti pločice samo tako da su im strane koje se dodiruju 
-                        istih boja. Kada složi jedan takav par, dobije pitanje iz kategorije koju je upario. Odgovori li 
-                        točno za to dobiva pet bodova, no odgovori li krivo pločica koju je složio izlazi iz polja i iz 
-                        cijele igre što mu smanjuje šanse za postizanje cilja te dobiva dva negativna boda. Ukoliko ima 
-                        kod sebe manje od osam pločica, igrač može pritiskom gumba zatražiti novu pločicu. Pločice se 
-                        slažu u obliku zmije s početkom u donjem lijevom kutu i krajem u gornjem lijevom. 
+                        Svaki točan odgovor nosi pet bodova, dok krivi odgovor nosi negativnih dva boda. Ukoliko se u ruci nalazi 8 pločica i igrač ne može uzeti niti jednu pločicu da
+                        nastavi niz te igrač želi izvući još jednu pločicu, to mu se onemogućava i gubi igru.
                     </h5>
                     <br/>
                     <h5 style={{ color: "#000000" }}>
-                        Za pobjedničku zmiju igrač mora složiti 30 pločica. Igrač ne može nastaviti igru, ako u ruci ima osam pločica,
-                        a niti jednu ne može staviti na polje. 
+                        Igra se pobjeđuje kada se napravi niz od 10 domino pločica. Ako igrač nema niti jednu pločicu u ruci, ima pravo
+                        vući jednu po jednu sve dok ne dobije odgovarajuću pločicu.
                     </h5>
                     <br/>
                 </Container>
