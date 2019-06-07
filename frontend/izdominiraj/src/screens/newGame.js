@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import '../App.css';
-import { Button, Container, ButtonGroup, Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
+import { Button, Container, ButtonGroup, Modal, ModalBody, ModalHeader, ModalFooter, Input } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Domina from "./domina";
 import axios from "axios";
@@ -32,7 +32,8 @@ class homepage extends Component {
           ruka: 0,
           koliko_pomaknutih : 0,
           kraj: false,
-          cilj: ''
+          cilj: '',
+          username: ''
         };
         var i, j;
         var domine = [];
@@ -44,6 +45,15 @@ class homepage extends Component {
         this.state.niz = domine;
       }
     
+      handleOnChange= event => {       
+        const value = event.target.value;
+        this.setState({
+            username: value       
+        });
+        
+        //console.log(this.state)
+    };
+
     moveDomina = (id) => {
 
         document.getElementById(id).style.position = "absolute";
@@ -130,40 +140,42 @@ class homepage extends Component {
         document.getElementById("jedna").disabled=false;
     }
 
+    handlePoint = () => {
+        axios({
+            method: 'POST',
+            url: 'http://localhost:59487/api/domino/score?points=' + this.state.score,
+            /*data: {
+                points: this.state.score
+            },*/
+            headers: {'Accept': 'application/json', "Content-Type": "application/json"}
+            
+          }).then(res => {
+            
+
+          }).catch(err => {
+            if (!err.response) {
+              alert('Nije moguće komunicirati sa poslužiteljem! Provjerite da li je upaljen..');
+              return;
+            }    
+            const code = err.response.status;    
+            if (code >= 500) {
+                alert('Problem sa serverom! Pogledajte ispise..');
+                return;
+            }    
+            alert('Nepoznata greška! ' + JSON.stringify(err));
+          });
+          this.handleBack();
+    }
 
     giveRandom = () => {
         
         if (this.state.ruka === 6){
-            axios({
-                method: 'POST',
-                url: 'http://localhost:59487/api/domino/score',
-                data: {
-                    points: this.state.score
-                },
-                headers: {'Accept': 'application/json', "Content-Type": "application/json"}
-                
-              }).then(res => {
-                
-
-              }).catch(err => {
-                if (!err.response) {
-                  alert('Nije moguće komunicirati sa poslužiteljem! Provjerite da li je upaljen..');
-                  return;
-                }    
-                const code = err.response.status;    
-                if (code >= 500) {
-                    alert('Problem sa serverom! Pogledajte ispise..');
-                    return;
-                }    
-                alert('Nepoznata greška! ' + JSON.stringify(err));
-              });
-            console.log("gksjdglkgjsdgkljs");
             alert("Previše pločica u ruci, ovu igru gubite!");
             this.setState({
                 cilj: 'izgubili'
             });
             this.toggleKraj();            
-            return;
+            //return;
         }
         var r = Math.floor(Math.random() * this.state.niz.length);
         var prva = this.state.niz[r] % 10;
@@ -267,8 +279,12 @@ class homepage extends Component {
                         <ModalBody >
                             <Container>
                                 <div>
-                                    Ovu igru ste {this.state.cilj}! Vaš rezultat je {this.state.score}
+                                    Ovu igru ste {this.state.cilj}! Vaš rezultat je: {this.state.score}
                                 </div>
+                                <br/>
+                                Spremite rezultat pod sljedećim nazivom:
+                                <Input value={this.state.username} onChange={this.handleOnChange} type="text">
+                                </Input>
                             </Container>
                         </ModalBody>
                             <ModalFooter >  

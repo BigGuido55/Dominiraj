@@ -60,7 +60,7 @@ namespace DominoWebApi.Controllers
         // POST api/domino/score
         [HttpPost]
         [Route("score")]
-        public int PostScore([FromBody] int points)
+        public int PostScore(int points)
         {
             Score newScore = new Score(Guid.NewGuid(), points);
             _context.AddScore(newScore);
