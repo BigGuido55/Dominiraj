@@ -10,9 +10,7 @@ namespace DominoWebApi.Database
     {
         Task<Question> GetRandomQuestionByCategory(String category);
         Task AddNewQuestion(Question question);
-        Task UpdateQuestion(Question question);
         Task AddScore(Score score);
-        Task<List<Score>> GetHighScore();
         Task<List<Score>> GetPlayerScores(Guid PlayerId);
         Task<List<String>> GetAllCategories();
         Task<List<Score>> GetTop(int number);

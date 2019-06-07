@@ -4,14 +4,16 @@ using DominoWebApi.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DominoWebApi.Migrations
 {
     [DbContext(typeof(DominoDbContext))]
-    partial class DominoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190607132136_finalMigration")]
+    partial class finalMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

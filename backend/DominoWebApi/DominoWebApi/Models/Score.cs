@@ -8,7 +8,7 @@ namespace DominoWebApi.Models
     public class Score
     {
         public Guid ScoreId { get; set; }
-        public Guid PlayerId { get; set; }
+        public string PlayerName { get; set; }
         public int Points { get; set; }
 
         public Score()
@@ -16,10 +16,10 @@ namespace DominoWebApi.Models
             this.ScoreId = Guid.NewGuid();
         }
 
-        public Score (Guid Id, int Points)
+        public Score (string Id, int Points)
         {
             this.ScoreId = Guid.NewGuid();
-            this.PlayerId = Id;
+            this.PlayerName = Id;
             this.Points = Points;
         }
     }

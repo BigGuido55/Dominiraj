@@ -44,7 +44,7 @@ namespace DominoWebApi.Controllers
             return await _context.GetAllCategories();
         }
 
-        // GET api/domino/5
+        /*// GET api/domino/5
         [HttpGet("{num}")]
         public async Task Get(int num)
         {
@@ -55,14 +55,14 @@ namespace DominoWebApi.Controllers
             {
                 await _context.AddScore(new Score(player, rand.Next(101)));
             }
-        }
+        }*/
 
         // POST api/domino/score
         [HttpPost]
         [Route("score")]
-        public int PostScore([FromBody] int points)
+        public int PostScore(int points, string name)
         {
-            Score newScore = new Score(Guid.NewGuid(), points);
+            Score newScore = new Score(name, points);
             _context.AddScore(newScore);
             return points;
         }
