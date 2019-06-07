@@ -143,7 +143,7 @@ class homepage extends Component {
     handlePoint = () => {
         axios({
             method: 'POST',
-            url: 'http://localhost:59487/api/domino/score?points=' + this.state.score,
+            url: 'http://localhost:59487/api/domino/score?points=' + this.state.score + '&name=' + this.state.username,
             /*data: {
                 points: this.state.score
             },*/
@@ -289,7 +289,7 @@ class homepage extends Component {
                         </ModalBody>
                             <ModalFooter >  
                             <div >
-                                 <Button onClick={this.handleBack} >Povratak na početni ekran</Button>
+                                 <Button onClick={this.handlePoint} >Povratak na početni ekran</Button>
                             </div>                  
                             </ModalFooter>
                         </Modal>

@@ -28,11 +28,6 @@ namespace DominoWebApi.Database
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Score>> GetHighScore()
-        {
-            return await _context.Highscore.OrderByDescending(s => s.Points).Take(10).ToListAsync();
-        }
-
         public Task<List<Score>> GetPlayerScores(Guid PlayerId)
         {
             throw new NotImplementedException();
@@ -43,11 +38,6 @@ namespace DominoWebApi.Database
             List<Question> questions = await _context.Questions.Where(s => s.Category.Equals(category)).ToListAsync();
             Random rand = new Random();
             return questions[rand.Next(questions.Count)];
-        }
-
-        public Task UpdateQuestion(Question question)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<List<String>> GetAllCategories()

@@ -51,6 +51,7 @@ class Highscores extends Component {
             }    
             alert('Nepoznata greška! ' + JSON.stringify(err));
           });
+          console.log("ušao");
         console.log(this.state.scores);
 
     }
@@ -66,7 +67,7 @@ class Highscores extends Component {
                         
                     <tr>
                         <th>Mjesto</th>
-                        <th>Id igrača</th>
+                        <th>Ime igrača</th>
                         <th>Bodovi</th>
                        
                     </tr>
@@ -75,7 +76,7 @@ class Highscores extends Component {
                     {this.state.scores.map((s, index) => (                            
                             <tr>
                             <th scope="row">{index+1}</th>
-                            <td>{s.playerId}</td>
+                            <td>{s.playerName}</td>
                             <td>{s.points}</td>
                         </tr>
                     ))}
