@@ -44,33 +44,13 @@ namespace DominoWebApi.Controllers
             return await _context.GetAllCategories();
         }
 
-        /*// GET api/domino/5
-        [HttpGet("{num}")]
-        public async Task Get(int num)
-        {
-            Guid player = Guid.NewGuid();
-            Random rand = new Random();
-
-            for(int i = 0; i < num; i++)
-            {
-                await _context.AddScore(new Score(player, rand.Next(101)));
-            }
-        }*/
-
         // POST api/domino/score
         [HttpPost]
         [Route("score")]
-        public int PostScore(int points, string name)
+        public async Task PostScore(int points, string name)
         {
             Score newScore = new Score(name, points);
-            _context.AddScore(newScore);
-            return points;
-        }
-
-        // PUT api/domino/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
+            await _context.AddScore(newScore);
         }
 
         // DELETE api/domino/5
