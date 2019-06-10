@@ -29,7 +29,7 @@ namespace DominoDBinsert
             modelBuilder.Entity<Question>().Property(s => s.WrongAnswer3).IsRequired();
 
             modelBuilder.Entity<Score>().HasKey(s => s.ScoreId);
-            modelBuilder.Entity<Score>().Property(s => s.PlayerId).IsRequired();
+            modelBuilder.Entity<Score>().Property(s => s.PlayerName).IsRequired();
             modelBuilder.Entity<Score>().Property(s => s.Points).IsRequired();
         }
     }

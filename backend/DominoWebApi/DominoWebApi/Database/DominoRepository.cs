@@ -28,11 +28,6 @@ namespace DominoWebApi.Database
             await _context.SaveChangesAsync();
         }
 
-        public Task<List<Score>> GetPlayerScores(Guid PlayerId)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<Question> GetRandomQuestionByCategory(string category)
         {
             List<Question> questions = await _context.Questions.Where(s => s.Category.Equals(category)).ToListAsync();

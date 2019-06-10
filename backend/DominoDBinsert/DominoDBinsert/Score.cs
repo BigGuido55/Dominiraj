@@ -8,7 +8,7 @@ namespace DominoDBinsert
     public class Score
     {
         public Guid ScoreId { get; set; }
-        public Guid PlayerId { get; set; }
+        public string PlayerName { get; set; }
         public int Points { get; set; }
 
         public Score()
@@ -16,10 +16,10 @@ namespace DominoDBinsert
             this.ScoreId = Guid.NewGuid();
         }
 
-        public Score (Guid Id, int Points)
+        public Score (string name, int Points)
         {
             this.ScoreId = Guid.NewGuid();
-            this.PlayerId = Id;
+            this.PlayerName = name;
             this.Points = Points;
         }
     }
