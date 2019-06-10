@@ -33,21 +33,22 @@ class Instructions extends Component {
                     <br/>
                     <h5 style={{ color: "#000000" }}>
                         Žuto polje predstavlja pitanja iz umjetnosti, crveno geografiju, plavo sport, zeleno znanost, narančasto povijest, 
-                        a rozo pitanja o Republici Hrvatskoj. Igrač na početku uzima tri pločice. Pločica se bira pritiskom na gumb jedne
-                        polovice pločice. Prvu pločicu može odabrati bilo koju dok ostale može birati samo onu kategoriju koja je zadnja
+                        a rozo pitanja o Republici Hrvatskoj. Igrač na početku uzima tri pločice. Pritiskom  na jednu polovicu pločice 
+                        odabire se kategorija na koju se želi odgovarati te korisnik dobije na ekran nasumično pitanje iz te kategorije.
+                        Prvu pločicu može odabrati bilo koju dok ostale može birati samo onu kategoriju koja je zadnja
                         u nizu domina, nebitno na kojoj je polovici pločice koju bira. Ukoliko se odgovori točno na pitanje, pločica se
                         miče iz "ruke" i stavlja se na polje u niz.
                     </h5>
                     <br/>
                 
                     <h5 style={{ color: "#000000" }}> 
-                        Svaki točan odgovor nosi pet bodova, dok krivi odgovor nosi negativnih dva boda. Ukoliko se u ruci nalazi 8 pločica i igrač ne može uzeti niti jednu pločicu da
-                        nastavi niz te igrač želi izvući još jednu pločicu, to mu se onemogućava i gubi igru.
+                        Svaki točan odgovor nosi pet bodova, dok krivi odgovor nosi negativnih dva boda. Ukoliko se u ruci nalazi 8 pločica 
+                        i igrač ne može uzeti niti jednu pločicu da nastavi niz te igrač želi izvući još jednu pločicu, to mu se onemogućava i gubi igru.
                     </h5>
                     <br/>
                     <h5 style={{ color: "#000000" }}>
                         Igra se pobjeđuje kada se napravi niz od 10 domino pločica. Ako igrač nema niti jednu pločicu u ruci, ima pravo
-                        vući jednu po jednu sve dok ne dobije odgovarajuću pločicu.
+                        vući jednu po jednu.
                     </h5>
                     <br/>
                 </Container>

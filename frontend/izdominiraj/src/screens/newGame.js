@@ -91,35 +91,12 @@ class homepage extends Component {
             i : this.state.i + 1
         });
 
-        if (this.state.i === 3){
+        if (this.state.i === 10){
             alert("Bravo! Pobjeda!");
             this.setState({
                 cilj : 'pobjedili'
             });
             //tu ide poziv metode
-            axios({
-                method: "POST",
-                url:"http://localhost:59487/api/domino/score",
-                data: {
-                    points: this.state.score
-                },
-                headers: { 'Accept': 'application/json', "Content-Type": "application/json"}
-                
-              }).then(res => {
-                console.log("uspio");
-
-              }).catch(err => {
-                if (!err.response) {
-                  alert('Nije moguće komunicirati sa poslužiteljem! Provjerite da li je upaljen..');
-                  return;
-                }    
-                const code = err.response.status;    
-                if (code >= 500) {
-                    alert('Problem sa serverom! Pogledajte ispise..');
-                    return;
-                }    
-                alert('Nepoznata greška! ' + JSON.stringify(err));
-              });
               
             this.toggleKraj();
             console.log("prošao");
@@ -266,7 +243,7 @@ class homepage extends Component {
 
                     </Container>
 
-                    <Container style={{"position":"absolute", "bottom":"30%", "right":"25%", width:"15%", height:"40%"}} className="App-tekst">
+                    <Container style={{"position":"absolute", "bottom":"30%", "right":"25%", width:"16%", height:"34%"}} className="App-tekst">
                         <h3 style={{ color: "#000000" }}>
                             Trenutni rezultat: {this.state.score}
                         </h3>
